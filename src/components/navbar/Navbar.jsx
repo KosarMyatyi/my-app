@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <nav className={cls.container}>
       <Link href='/' className={cls.logo}>
-        PiedPiper
+        myApp
       </Link>
       <div className={cls.links}>
         {links.map((link) => (
