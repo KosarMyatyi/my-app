@@ -1,14 +1,28 @@
 import Image from 'next/image'
 import cls from './page.module.css'
 
-const BlogId = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: 'no-store'
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+const BlogId = async ({ params }) => {
+  const data = await getData(params.id)
+
   return (
     <div className={cls.container}>
       <div className={cls.top}>
         <div className={cls.info}>
-          <h1 className={cls.title}>Title</h1>
+          <h1 className={cls.title}>{data.title}</h1>
           <p className={cls.desc}>
-            desc
+            {data.body}
           </p>
           <div className={cls.author}>
             <Image
