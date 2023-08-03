@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link";
+import cls from './page.module.css'
 
 const links = [
   {
@@ -36,14 +39,15 @@ const links = [
 
 const Navbar = () => {
   return (
-    <nav>
-      <Link href='/'>
-        MyApp
+    <nav className={cls.container}>
+      <Link href='/' className={cls.logo}>
+        PiedPiper
       </Link>
-      <div>
+      <div className={cls.links}>
         {links.map((link) => (
           <Link key={link.id} href={link.url}>{link.title}</Link>
         ))}
+        <button className={cls.logout} onClick={() => console.log('Logout')}>Logout</button>
       </div>
     </nav>
   )

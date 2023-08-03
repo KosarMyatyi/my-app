@@ -1,8 +1,8 @@
-import React from 'react';
+import cls from './page.module.css'
 
 const About = () => {
   return (
-    <div>
+    <div className={cls.container}>
       About
     </div>
   );
