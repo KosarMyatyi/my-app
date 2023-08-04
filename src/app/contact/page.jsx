@@ -2,6 +2,11 @@ import cls from './page.module.css'
 import Image from 'next/image';
 import Button from '../../components/Button/Button';
 
+export const metadata = {
+  title: 'Contact',
+  description: 'This is contact',
+}
+
 const Contact = () => {
   return (
     <div className={cls.container}>
