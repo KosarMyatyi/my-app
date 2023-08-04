@@ -3,7 +3,9 @@ import cls from './page.module.css'
 import Image from 'next/image';
 
 async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts', { cache: 'no-store'})
+  const res = await fetch('http://localhost:3000/api/posts',
+    { cache: 'no-store' }
+  )
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -18,10 +20,10 @@ const Blog = async () => {
   return (
     <div className={cls.mainContainer}>
       {data.map((item) => (
-        <Link href={`blog/${item.id}`} className={cls.container} key={item.id}>
+        <Link href={`blog/${item._id}`} className={cls.container} key={item._id}>
           <div className={cls.imageContainer}>
             <Image
-              src='https://img.freepik.com/premium-vector/visionary-look-to-see-future-or-search-for-opportunity-finding-way-to-success-or-discover-new-job-or-career-challenge-or-mission-concept-businessman-look-through-telescope-to-see-business-vision_212586-2120.jpg?w=996'
+              src={item.img}
               alt=''
               width={400}
               height={250}
@@ -30,7 +32,7 @@ const Blog = async () => {
           </div>
           <div className={cls.content}>
             <h1 className={cls.title}>{item.title}</h1>
-            <p className={cls.desc}>{item.body}</p>
+            <p className={cls.desc}>{item.desc}</p>
           </div>
         </Link>
       ))}
